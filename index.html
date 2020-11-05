@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Home - la clôture heureuse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+  <script src="./js/sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="./css/sweetalert2.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  </head>
+  <body onload="onloadAll()">
+  
+
+
+  
+
+
+
+
+  	<div class="container-fluid p-0" style="background: url(./image/homeBackground.jpg) no-repeat;
+  background-size: cover;
+  height: calc(100vh);">
+  <p id="intro">Boulangerie &<br> patisserie 100% artesanal.
+  </p>
+  <p id="presentacion"><br>Respetamos las recetas originales <br>y asi aspiramos brindar a nuestros clientes<br> la autentica experiencia de la pasteleria francesa.<br>Todos nuestros platos estan elaborados con productos 100% organicos.
+    
+  </p>
+  <button style="margin-left: 140px;position: absolute;margin-top: 570px;background: #fb9200;padding: 10px;border: 0;border-radius: 30px;color: #fff;padding-left: 30px;padding-right: 30px;-webkit-box-shadow: 10px 13px 38px -19px rgba(251,146,0,1);
+-moz-box-shadow: 10px 13px 38px -19px rgba(251,146,0,1);
+box-shadow: 10px 13px 38px -19px rgba(251,146,0,1);"><a href="#listadoProductos" id="verMenu">Ver menu</a></button>
+    <nav  id="menu" style="position: fixed;z-index: 999;">
+      <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <label class="logo">la clôture heureuse</label>
+      <ul>
+
+<li><a onclick="homePage()" class="active text-white" href="#top">Inicio</a></li>
+<li><a data-toggle="modal" data-target=".orderCart">Carrito<div style="width: 20px;height: 20px;background: #fb9200;position: absolute;top: 25px;margin-left: 80px;border-radius: 50%"><p id="productosCarrito" >0</p></div> </a></li>
+<li><a href="#sucursales" id >Sucursales</a></li>
+<li><a id="botonLogin"  data-toggle="modal" data-target=".login">Iniciar sesión</a></li>
+<li  ><a id="menuCuenta" class="hideMenuCuenta" style="display: none;"></a>
+
+
+</li>
+</ul>
+
+<div id="menu_logout">
+<div id="menuDesplegable" class="menuDesp p-3" style="margin: 0 auto;width: 200px; background: #cc99ff; border-radius: 8px; font-family: Helvetica, Arial, sans-serif;padding: 0.5rem;position: absolute;z-index: 999;margin-left: calc(100vw - 250px);margin-top: -25px;display: none;">
+      <p id="holaUsuario" class="text-white" style="opacity: 0.9"></p>
+      <div id="botonGestionar" class="box p-1" style="height: 35px;display: none;">  
+        <a href="dashboard.html">
+        <p><i class="fa fa-list-alt text-white mr-3" aria-hidden="true"></i>Administración</p></a>
+      </div>
+      <div class="box p-1" data-toggle="modal" data-target=".bd-example-modal-lg22"  style="height: 35px">
+        
+        <p ><i class="fas fa-concierge-bell text-white mr-3" aria-hidden="true"></i>Mis Pedidos</p>
+        
+      </div>
+      <div class="box p-1" data-toggle="modal" data-target=".bd-example-modal-sm33"  style="height: 35px">
+        
+        <p ><i class="fa fa-key text-white mr-3" aria-hidden="true"></i>Contraseña</p>
+        
+      </div>
+      
+
+      <div class="box p-1" style="height: 35px">
+        
+        <p onclick="Logout()"><i class="fas fa-sign-out-alt text-white mr-3" aria-hidden="true"></i>Cerrar sesión</p>
+      </div>
+</div>
+    </div>
+
+</nav>
+</div>
+<div class="modal fade bd-example-modal-lg22" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" >
+    <div class="modal-content p-3" style="width: 150%;left: -200px;">
+      <p class="font-weight-bold" style="font-size: 110%">Pedido</p>
+
+      <div data-spy="scroll" data-target="#myScrollspy" data-offset="10"
+                  style="height:520px;overflow-y: scroll;padding-top: 5px;padding-right: 10px;">
+        <table class="table table-borderless">
+   
+    
+  <thead>
+    <tr>
+      <th scope="col" style="width: 20%;font-size: 115%;" >Cliente</th>
+      <th scope="col" style="width: 44%;font-size: 115%;" class="text-center">Producto</th>
+      <th scope="col" style="width: 18%;font-size: 115%;" class="text-center">Total</th>
+      <th scope="col" style="width: 18%;font-size: 115%;" class="text-center">Estado de compra</th>
+    </tr>
+  </thead>
+
+  <tbody id="infoPago">
+    
+
+  </tbody>
+
+
+
+</table>
+</div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade bd-example-modal-sm33 mt-5" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel33" aria-hidden="true" >
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="popupIcon " style="margin: 0 auto; width: 27%;height: 100%; margin-top: 20%;">
+         
+          
+          <i class="fas fa-shield-alt fa-5x" style="color: #fb9200; margin: auto;"></i>
+      </div>
+      
+      <div id="cambiarPassword" class=" popupIcon mt-4" style="margin: 0 auto; width: 80%;margin-bottom: 10%;">
+          <p class="text-center mb-3" style="font-weight: bold;margin-bottom: 2%;font-size: 120%">Cambiar contraseña</p>
+          <p class="mt-3" style="margin-bottom: 2%;">Contraseña actual</p>
+          <input type="password" name="pass" id="currentPassword" class="form-control " >
+          <p class="mt-1" style="margin-bottom: 2%;">Nueva contraseña</p>
+          <input type="password" name="pass" id="newPassword" class="form-control " >
+          <p class="mt-1" style="margin-bottom: 2%;">Confirmar contraseña</p>
+          <input type="password" name="pass" id="repeatNewPassword" class="form-control " >
+          <p id="passwordChangeNotification" class="mt-4 text-center mb-0 " style="font-size: 90%;color: red;"></p>
+          <button class="btn btn-warning mt-3" onclick="changePassword()">Cambiar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade login mt-5 " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content ">
+            
+
+
+            <div class="contenedorCarrito" style="width: 100%;margin: auto;">  
+        <div class="imgLogin float-left" style="width: 50%;height: 450px;background: pink;">
+      <img src="./image/imgLogin.png" width="100%" height="100%">
+    </div>
+
+    <div id="menuLogin" >
+        <div class="infoLogin float-right p-5" style="width: 50%;height: 450px;">
+    <p class="text-center font-weight-bold" style="font-size: 140%">Login</p> 
+    <label class="font-weight-bold mt-3">Usuario</label> 
+    <input id="usuarioLogin" type="text" class="form-control" aria-describedby="emailHelp" placeholder="" style="outline: none;">
+    <label class="mt-3 font-weight-bold">Contraseña</label> 
+    <input id="passwordLogin" type="password" class="form-control" aria-describedby="emailHelp" placeholder="">
+    <button onclick="Login()" class="btn btn-primary mt-4" style="width: 100%;background: #fb9200;border: 0;outline: none;">Login</button>
+    <p id="estadoLogin" class="text-center mt-4" style="font-size: 90%;color: red;"></p>
+    <p onclick="openSignup()" class="text-center mt-3" style="font-size: 90%">No tenes una cuenta? Registrate<strong style="color:#fb9200 "> aca.</strong> </p>
+    </div>
+    </div>
+
+    
+    
+    <div id="menuRegistro" style="display: none;">
+    <div class="infoRegistro float-right p-4 pl-5 pr-5" style="width: 50%;height: 450px;">
+    <p class="text-center font-weight-bold" style="font-size: 140%">Registro</p> 
+    <label class="font-weight-bold mt-1">Usuario</label> 
+    <input id="registroUsuario" type="email" class="form-control" aria-describedby="emailHelp" placeholder="" style="outline: none;">
+    <label class="mt-3 font-weight-bold">Contraseña</label> 
+    <input id="passwordSignup" type="password" class="form-control" aria-describedby="emailHelp" placeholder="">
+    <label class="mt-3 font-weight-bold">Confirmar contraseña</label> 
+    <input id="confRegistroPassword" type="password" class="form-control" aria-describedby="emailHelp" placeholder="">
+    <button onclick="Signup()" class="btn btn-primary mt-4" style="width: 100%;background: #fb9200;border: 0;outline: none;">
+    Crear cuenta</button>
+    <p id="estadoRegistro" class="text-center mt-3 mb-1" style="font-size: 90%;color: red;"></p>
+    <p onclick="openLogin()" class="text-center mt-0" style="font-size: 90%">Si ya tenes una cuenta, inicia sesión<strong  style="color:#fb9200 "> aca</strong> </p>
+    </div>
+    </div>
+    <div style="clear: both;"></div>
+  </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade orderCart mt-3 " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content ">  
+
+
+            <div id="miCarrito" class="contenedorCarrito pl-5 pt-4 shadow-sm mt-3 pb-4" style="width: 100%;margin: auto;">
+        <p class="ml-2" style="font-size: 130%;font-weight: bold;">Mi Carrito</p>
+        <div data-spy="scroll" data-target="#myScrollspy" data-offset="10"
+                  style="height:340px;overflow-y: scroll;padding-top: 5px;padding-right: 10px;">
+        <table class="table table-borderless">
+  <thead>
+    <tr>
+      <th scope="col" style="width: 40%;font-size: 115%;" >Producto</th>
+      <th scope="col" style="width: 20%;font-size: 115%;" class="text-center">Cantidad</th>
+      <th scope="col" style="width: 20%;font-size: 115%;" class="text-center">Precio</th>
+      <th scope="col" style="width: 20%;font-size: 115%;" class="text-center">Eliminar</th>
+    </tr>
+  </thead>
+  <tbody id="tablaCarrito">
+    
+    
+    
+  </tbody>
+</table>
+</div>
+<div class="float-left pl-2" style="width: 30%;">
+    <p class="font-weight-bold mt-2" style="font-size: 115%">Total</p>
+</div>
+<div  class="float-right pr-5" style="width: 30%;">
+    <p id="importeTotal" class="font-weight-bold float-right mt-2" style="font-size: 115%"> </p>
+</div>
+<div style="clear: both;"></div>
+<div onclick="checkout()" class="btn mr-5 text-white float-right" style="background: #fb9200;">Comprar</div>
+<div style="clear: both;"></div>
+    </div>
+
+
+
+<div id="formularioPago" class="p-5" style="width: 100%;height: 400px;display: none;">
+  		<div class="contOpcionPago float-left" style="width: 60%;">
+  		<p class="font-weight-bold" style="font-size: 130%">PAGO</p>  		
+  		<p class="mb-2 font-weight-bold">Medios de pago disponibles.</p>
+  		<div class="opcionesPago" style="width: 60%">
+  		<div class="float-left pr-1 pb-1" style="width: 50%;height: 80px;">
+  		<img onclick="visa()" class="pagoVisa " src="image/visa.png" width="100%" height="100%" style="border: 1px solid #d7d7d7;">			
+  		</div>
+  		<div class="float-right pr-1 pb-1" style="width: 50%;height: 80px;">
+  		<img onclick="mastercard()" class="pagoMastercard" src="image/mastercard.jpeg" width="100%" height="100%" style="border: 1px solid #d7d7d7;">			
+  		</div>
+  		<div class="float-left pr-1 pb-1" style="width: 50%;height: 80px;">
+  		<img onclick="naranja()" class="pagoNaranja" src="image/americanexpress.jpeg" width="100%" height="100%" style="border: 1px solid #d7d7d7;">			
+  		</div>
+  		<div class="float-right pr-1 pb-1" style="width: 50%;height: 80px;">
+  		<img onclick="efectivo()" class="pagoEfectivo pl-3 pr-3" src="image/efectivo.png" width="100%" height="100%" style="border: 1px solid #d7d7d7;">			
+  		</div>
+  		<div style="clear: both;"></div>
+  		</div>
+  		</div>
+  		<div class="contOpcionPago p-3 float-right" style="width: 40%;height: 100px;">
+  			<label for="exampleInputEmail1">Nombre</label>
+    
+    
+    <input id="nombreCliente" type="text" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp">
+    <label for="exampleInputEmail1" class="mt-3">Teléfono</label>
+    <input id="telefonoCliente" type="text" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+    <label for="exampleInputEmail1" class="mt-3">Dirección</label>
+    <input id="direccionCliente" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+    <button onclick="payment()" class="btn btn-primary float-right mt-3">Pagar</button>
+  		</div>
+  	</div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div id="listadoProductos" class="container">
+	<div class="row" id="menuProductos">
+		
+		
+	</div>
+</div>
+
+<div class="container-fluid">
+<h1 style="text-align: center; margin-top: 15px; margin-bottom: 25px;" id="sucursales">Sucursales</h1>
+
+
+<p style="margin-bottom: 15px; margin-left: 240px; margin-right: 240px; margin-top: 30px; margin-bottom: 40px;"><em>La clôture heureuse</em>, fundada en julio de 2019 por la electrizante chef Natalie Paquette por el momento no cuenta con un local, ademas de poder hacernos pedidos por nuestra web nos podes encontrar todos los fines de semana en Plaza Francia.</p>
+
+
+
+<div id="myMap" style="height: 380px; width: 580px; margin: auto;"></div>
+
+<p style="text-align: center;"><br>Sabados de 12:00 a 20:00<br>Domingos de 12:00 a 18:00<br>Feriados de 14:00 a 18:00</p>
+
+</div>
+<div class="container-fluid">
+  <footer><p style="color: white; text-align: right; margin-right: 20px;">©2020</p></footer>
+</div>
+
+
+
+ <script src="./js/app.js"></script>
+ <script src="./js/administrador.js"></script>
+<script src="./js/map.js"></script>
+  </body>
+</html>
+
+

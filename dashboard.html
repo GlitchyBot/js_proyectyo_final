@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Dashboard - la clôture heureuse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="./js/sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="./css/sweetalert2.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  </head>
+ 
+  <body onload="onloadAll1()">
+  	<div class="container-fluid p-0">
+      <div class="row m-0 p-0">
+        
+     <div class="col-2 pl-0 p-0" style="height: 100vh;">
+      <div style="position: fixed;width: 220px;">
+      <p class="text-center font-weight-bold mt-3 mb-4" style="font-size: 120%">ADMINISTRACION</p>
+      
+      <div class="botonesBarra mt-4" style="width: 85%;margin: auto;border-radius: 10px;display: flex;">
+        <div class="iconosBarra" style="width: 16%;padding: 7px;">
+          <i class="fas fa-list-alt fa-lg" style="color: #ff9933;"></i>
+        </div>
+       
+        
+        <div class="textoBarra p-2 pr-0">
+           <p id="textoDash" class="mb-0" style="font-weight: bold;">Dashboard</p>
+        </div>
+        </div>
+
+        <div class="botonesBarra mt-2" style="width: 85%;margin: auto;border-radius: 10px;display: flex;">
+        <div class="iconosBarra" style="width: 16%;padding: 7px;">
+          <i class="fas fa-cog fa-lg" style="color: #ff9933;"></i>
+        </div>
+        <div class="textoBarra p-2 pr-0" style="width: 80%;">
+           <p id="gestionProductos" class="mb-0">Gestión de productos</p>
+        </div>
+        </div>
+
+        <div class="botonesBarra mt-2" style="width: 85%;margin: auto;border-radius: 10px;display: flex;">
+        <div class="iconosBarra" style="width: 16%;padding: 7px;">
+          <i class="fas fa-bell fa-lg" style="color: #ff9933;"></i>
+        </div>
+        <div class="textoBarra p-2 pr-0" style="width: 80%;">
+           <p id="gestionPedidos" class="mb-0">Gestión de pedidos</p>
+        </div>
+        </div>
+        
+        <div class="botonesBarra mt-2" style="width: 85%;margin: auto;border-radius: 10px;display: flex;">
+        <div class="iconosBarra" style="width: 16%;padding: 7px;">
+          <i class="fas fa-user-circle fa-lg" style="color: #ff9933;"></i>
+        </div>
+        <div class="textoBarra p-2 pr-0" style="width: 80%;">
+           <p id="gestionCuentas" class="mb-0">Gestión de cuentas</p>
+        </div>        
+        </div>
+        <div class="botonesBarra mt-2" style="width: 85%;margin: auto;border-radius: 10px;display: flex;">
+          <div class="iconosBarra" style="width: 16%;padding: 7px;">
+            <i class="fas fa-arrow-circle-left fa-lg" style="color: #ff9933;"></i>
+          </div>
+          <div class="textoBarra p-2 pr-0" style="width: 80%;">
+            <a href="index.html" class="mb-0">Volver</a>
+          </div>
+        </div>
+</div>
+
+     </div>
+     <div class="col-10  p-0">
+       <div class="row m-0 p-0 ">
+         <div class="col-12 bg-white" style="height: 70px;">
+           
+         </div>
+          <div id="contenedorDashboard" class="col-12 bg-white mt-1" style="height: 570px;">
+            <p class="font-weight-bold" style="font-size: 130%">DASHBOARD</p>
+            <div id="totalProductos" style="display: none;">
+            
+</div>
+
+            <div class="row m-0">
+              <div class="col-xs-12 col-sm-6 col-md-3 p-3">
+                <div class="statsDash pt-2 pb-0 pl-4 pr-3 shadow-sm" style="background: #fff;">
+                  <p style="font-size: 110%" class="float-left mt-1">Productos disponibles</p>
+                  <p id="numeroProductos" style="font-size: 200%;font-weight: bold;" class="float-right mt-4 mb-2"></p>
+                  <div style="clear: both;"></div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-3 p-3">
+                <div class="statsDash pt-2 pb-0 pl-4 pr-3 shadow-sm" style="background: #fff;">
+                  <p style="font-size: 110%" class="float-left mt-1">Cuentas activas</p>
+                  <p id="numeroCuentas" style="font-size: 200%;font-weight: bold;" class="float-right mt-4 mb-2"></p>
+                  <div style="clear: both;"></div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-3 p-3">
+                <div class="statsDash pt-2 pb-0 pl-4 pr-3 shadow-sm" style="background: #fff;">
+                  <p style="font-size: 110%" class="float-left mt-1">Pedidos entregados</p>
+                  <p id="numeroPedidos" style="font-size: 200%;font-weight: bold;" class="float-right mt-4 mb-2"></p>
+                  <div style="clear: both;"></div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-3 p-3">
+                <div class="statsDash pt-2 pb-0 pl-4 pr-3 shadow-sm" style="background: #fff;">
+                  <p style="font-size: 110%" class="float-left mt-1">Comentarios recibidos</p>
+                  <p id="numeroComentarios" style="font-size: 200%;font-weight: bold;" class="float-right mt-4 mb-2"></p>
+                  <div style="clear: both;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row m-0">
+              <div class="col-6 p-3">
+                <div class="dashDetails pt-2 pb-0 pl-4 pr-3 shadow-sm" style="height: 300px;background: #fff">
+                  <p style="font-size: 110%" class=" mt-1">PEDIDOS TOTALES</p>
+                  <div id="scroll_height" data-spy="scroll" data-target="#myScrollspy" data-offset="10"
+                  style="height:220px;overflow-y: scroll;padding-right: 10px;">   
+                  <table class="table table-borderless" style="margin-top: -25px;">
+  <thead>
+    <tr>
+      <th scope="col" style="width: 80%;font-size: 115%;" ></th>
+      
+    
+    </tr>
+  </thead>
+
+  <tbody id="pedidosDashboard">
+  	
+
+  </tbody>
+
+</table></div>
+
+                </div>
+              </div>
+
+              <div class="col-6 p-3">
+                <div class="dashDetails pt-2 pb-0 pl-4 pr-3 shadow-sm" style="height: 300px;background: #fff">
+                  <p style="font-size: 110%" class=" mt-1">LISTADO DE PRODUCTOS</p>
+                  <div id="scroll_height2" data-spy="scroll" data-target="#myScrollspy" data-offset="10"
+                  style="height:220px;overflow-y: scroll;padding-top: 5px;padding-right: 10px;">    
+    <table class="table table-borderless" style="margin-top: -25px;">
+  <thead>
+    <tr>
+
+      <th scope="col" style="width: 60%;font-size: 115%;" ></th>
+      
+      <th scope="col" style="width: 40%;font-size: 115%;" class="text-center"></th>
+      
+    </tr>
+  </thead>
+
+  <tbody id="productosDashboard">
+
+
+  </tbody>
+
+</table>
+</div>
+                </div>
+              </div>
+
+              <div class="col-6 p-3">
+                <div class="dashDetails pt-2 pb-0 pl-4 pr-3 shadow-sm" style="height: 300px;background: #fff">
+                  <p style="font-size: 110%" class="float-left mt-1">RESEÑAS</p>
+                  <div id="scroll_height2" data-spy="scroll" data-target="#myScrollspy" data-offset="10"
+                  >
+                    <table style="width: 100%">
+                <thead>
+    <tr>
+      <th scope="col" style="width: 20%;font-size: 115%;">Nro. orden</th>
+      <th scope="col" style="width: 40%;font-size: 115%;">Cliente</th>
+      <th scope="col" style="width: 40%;font-size: 115%;">Opiniones</th>
+    </tr>
+  </thead>
+
+  <tbody id="opinionesDashboard">
+    <tr>
+      <td>jfj</td>
+      <td>jfj</td>
+       <td>jfj</td>
+    </tr>
+
+  </tbody>
+              </table>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+ 
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+          <div id="tablaPedidos" class="col-12" style="display: none;">
+          	<p class="font-weight-bold" style="font-size: 130%">PEDIDOS</p>
+          	<div class="shadow-sm pt-2" style="width: 100%;height: 530px;background: #fff;">
+          		<div id="scroll_height" data-spy="scroll" data-target="#myScrollspy" data-offset="10"
+                  style="height:480px;overflow-y: scroll;padding-top: 5px;padding-right: 10px;">
+          		<div class="contenedorCarrito pl-5 pt-0 pb-4 pr-4" style="width: 100%;margin: auto;">  
+    <table class="table table-borderless">
+  <thead>
+    <tr>
+      <th scope="col" style="width: 20%;font-size: 115%;">Cliente</th>
+      <th scope="col" style="width: 44%;font-size: 115%;" class="text-center">Producto</th>
+      <th scope="col" style="width: 18%;font-size: 115%;" class="text-center">Importe total</th>
+      <th scope="col" style="width: 18%;font-size: 115%;" class="text-center">ESTADO</th>
+    </tr>
+  </thead>
+
+  <tbody id="infoPedidos">
+  	
+
+  </tbody>
+
+</table>
+</div>
+          	</div></div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+          <div id="tablaCuentas" class="col-12 bg-white mt-1" style="height: 570px;display: none;">
+            <p class="font-weight-bold" style="font-size: 130%">ADMINISTRACION DE CUENTAS</p>
+            <button onclick="showAddAccount()" class="btn btn-primary">Agregar cuentas</button>
+            <div id="entradaUsuario" style="display: none;">
+            <div  class="row m-0 shadow-sm pt-3" >
+              <div class="col-3">
+                <div class="form-group">
+                <label for="exampleInputEmail1">Nombre usuario</label>
+                <input type="text" class="form-control" id="entradaNombreUsuario"  placeholder=""> 
+                <input class="float-right" type="text" id="txtId" name="txtPrice" style="border:0; border-radius: 10px;height: 40px;background:#f8fafd;width:100%;outline: none;display: none;">
+            </div>
+              </div>
+              <div class="col-3" style="height: 100px;">
+                <div class="form-group">
+                <label for="exampleInputEmail1">Contraseña</label>
+                <input type="email" class="form-control" id="entradaPassword" placeholder=""> 
+            </div>
+              </div>
+              <div class="col-3" style="height: 100px;">
+                <div class="form-group">
+                <label for="exampleInputEmail1">Confirmar contraseña</label>
+                <input type="passwork" class="form-control" id="reEntradaPassword" placeholder=""> 
+            </div>
+              </div>
+                     
+              <div class="col-8 p-0  pl-3 pb-4">
+                <button id="agregarUsuario" onclick="addUser()" class="btn btn-primary float-left" style="background: #00cc00;border: 1px solid #00cc00;">Agregar</button>
+                <button id="actualizarUsuario" onclick="saveUserAdmin()" class="btn btn-warning text-white float-left" style="display: none;">Actualizar</button>
+                 <button onclick="cancelAccount()" class="btn btn-danger text-white ml-1">Cancelar</button>
+              </div>
+              
+            </div>
+      </div>
+
+
+
+
+      <div id="entradaActualizacionUsuario" style="display: none;">
+            <div  class="row m-0 shadow-sm pt-3" >
+              <div class="col-3">
+                <div class="form-group">
+                <label for="exampleInputEmail1">Nombre Usuario</label>
+                <input type="text" class="form-control" id="entradaCambioNombre"  placeholder=""> 
+                <input class="float-right" type="text" id="txtId" name="txtPrice" style="border:0; border-radius: 10px;height: 40px;background:#f8fafd;width:100%;outline: none;display: none;">
+            </div>
+              </div>
+              <div class="col-3" style="height: 100px;">
+                <div class="form-group">
+                <label for="exampleInputEmail1">Dirección</label>
+                <input type="text" class="form-control" id="entradaCambioDireccion" placeholder=""> 
+            </div>
+              </div>
+              <div class="col-3" style="height: 100px;">
+                <div class="form-group">
+                <label for="exampleInputEmail1">Teléfono</label>
+                <input type="text" class="form-control" id="entradaCambioTelefono" placeholder=""> 
+            </div>
+              </div>
+              <div class="col-3" style="height: 100px;">
+                <div class="form-group">
+                <label for="exampleInputEmail1">Medio de pago</label>
+                <select class="form-control" id="entradaCambioPago">
+                    <option value="visa">Visa</option>
+                    <option value="mastercard">Mastercard</option>
+                    <option value="naranja">Naranja</option>
+                    <option value="efectivo">Efectivo</option>
+                </select>
+            </div>
+              </div>
+                     
+              <div class="col-8 p-0  pl-3 pb-4">
+                <button id="actualizarUsuario" onclick="saveUserAdmin()" class="btn btn-warning text-white float-left">Actualizar</button>
+                 <button onclick="cancelAccount()" class="btn btn-danger text-white ml-1">Cancelar</button>
+              </div>
+              
+            </div>
+</div>
+
+
+
+
+            <div class="contenedorCarrito pl-5 pt-4 shadow-sm mt-3 pb-4" style="width: 100%;margin: auto;">
+<div id="scroll_height" data-spy="scroll" data-target="#myScrollspy" data-offset="10"
+                  style="height:450px;overflow-y: scroll;padding-top: 5px;padding-right: 10px;">    
+    <table class="table table-borderless">
+  <thead>
+    
+  </thead>
+
+  <tbody >
+    <div id="tablaGestionUsuarios" class="row m-0" >
+    
+  
+    </div>
+  </tbody>
+
+</table>
+</div>
+</div>
+
+ 
+          </div>
+
+
+
+
+
+
+
+
+
+
+<div id="contenedorGestionProductos" class="col-12 bg-white mt-1" style="height: 570px;display: none;">
+            <p class="font-weight-bold" style="font-size: 130%">GESTION DE PRODUCTOS</p>
+            <div onclick="showAddProduct()" id="nuevoProducto" class="botonesBarra mt-3"
+              style="width: 10%;background: #0080ff;margin-left: 0px;border-radius: 10px;padding: 12px;">
+              <p class="mb-0 text-white">Nuevo  &nbsp&nbsp<i class="fa fa-plus" aria-hidden="true"></i></p>
+            </div>
+            <div id="entradaProductos" style="display: none;">
+            <div  class="row m-0 shadow-sm pt-3" >
+              <div class="col-3">
+                <div class="form-group">
+                <label for="exampleInputEmail1">Nombre</label>
+                <input type="text" class="form-control" id="entradaNombreProducto"  placeholder=""> 
+                <input class="float-right" type="text" id="txtId" name="txtPrice" style="border:0; border-radius: 10px;height: 40px;background:#f8fafd;width:100%;outline: none;display: none;">
+            </div>
+              </div>
+              <div class="col-3" style="height: 100px;">
+                <div class="form-group">
+                <label for="exampleInputEmail1">Descripción</label>
+                <input type="email" class="form-control" id="entradaDescProducto" placeholder=""> 
+            </div>
+              </div>
+              <div class="col-3" style="height: 100px;">
+                <div class="form-group">
+                <label for="exampleInputEmail1">Precio</label>
+                <input type="number" class="form-control" id="entradaPrecioProducto" placeholder=""> 
+            </div>
+              </div>
+              <div class="col-3 p-0 pt-3 pl-3" style="height: 100px;">
+                <div class="btn btn-rounded waves-effect btn-sm" style="border-radius: 10px;width: 90%;background: #ff6f47">
+      <span class="text-white">Subir imagen</span>
+      <input class="text-white" type="file" type="file" name="file" id="agregarImg" >
+    </div>
+              </div>
+              <div class="col-8 p-0  pl-3 pb-4">
+                <button id="agregarProducto" onclick="AddFood()" class="btn btn-primary float-left" style="background: #00cc00;border: 1px solid #00cc00;">AREGAR</button>
+                <button id="actualizarProducto" onclick="SaveUpdateFood()" class="btn btn-warning text-white float-left" style="display: none;">ACTUALIZAR</button>
+                 <button onclick="cancelProduct()" class="btn btn-danger text-white ml-1">CANCELAR</button>
+              </div>
+              
+            </div>
+</div>
+
+            <div class="contenedorCarrito pl-5 pt-4 shadow-sm mt-3 pb-4" style="width: 100%;margin: auto;">
+<div id="scroll_height2" data-spy="scroll" data-target="#myScrollspy" data-offset="10"
+                  style="height:450px;overflow-y: scroll;padding-top: 5px;padding-right: 10px;">    
+    <table class="table table-borderless">
+  <thead>
+    <tr>
+
+      <th scope="col" style="width: 40%;font-size: 115%;" >PRODUCTO</th>
+      
+      <th scope="col" style="width: 20%;font-size: 115%;" class="text-center">PRECIO</th>
+      <th scope="col" style="width: 20%;font-size: 115%;" class="text-center">GESTION</th>
+    </tr>
+  </thead>
+
+  <tbody id="tablaGestionProductos">
+
+
+  </tbody>
+
+</table>
+</div>
+</div>
+
+ 
+          </div>
+
+
+
+
+
+
+
+
+       </div>
+     </div> 
+     </div> 
+    </div>
+ 
+  </body>
+
+<script src="./js/app.js"></script>
+<script src="./js/administrador.js"></script>
+</html>
+
+

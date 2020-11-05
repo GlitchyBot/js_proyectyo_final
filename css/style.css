@@ -1,0 +1,266 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+nav {
+  height: 80px;
+  width: 100%;
+}
+label.logo {
+  color: black;
+  font-size: 43px;
+  line-height: 80px;
+  padding: 0 140px;
+  font-weight: 600;
+  font-family: "Caveat", cursive;
+}
+nav ul {
+  float: right;
+  margin-right: 60px;
+}
+nav ul li {
+  display: inline-block;
+  line-height: 80px;
+  margin: 0 8px;
+}
+nav ul li a {
+  color: black;
+  font-weight: 400;
+  font-size: 16px;
+  padding: 7px 13px;
+  border-radius: 3px;
+  /* text-transform: uppercase; */
+  font-family: "Raleway", sans-serif;
+}
+a.active,
+a:hover {
+  background: #cc99ff;
+  transition: 0.5s;
+  color: #fff;
+}
+.checkbtn {
+  font-size: 30px;
+  color: white;
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+#check {
+  display: none;
+}
+@media (max-width: 952px) {
+  label.logo {
+    font-size: 27px;
+    padding-left: 25px;
+  }
+  nav ul li a {
+    font-size: 16px;
+  }
+}
+@media (max-width: 858px) {
+  .checkbtn {
+    display: block;
+    margin-right: 40px;
+  }
+  ul {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #2c3e50;
+    top: 80px;
+    left: -100%;
+    text-align: center;
+    transition: all 0.5s;
+  }
+  nav ul li {
+    display: block;
+    margin: 50px 0;
+    line-height: 30px;
+  }
+  nav ul li a {
+    font-size: 20px;
+  }
+  a:hover,
+  a.active {
+    background: none;
+    color: #0082e6;
+  }
+  #check:checked ~ ul {
+    left: 0;
+  }
+}
+
+.addToCart:hover {
+  opacity: 0.8;
+  transition: 0.6s;
+}
+
+.imgCarrito {
+  width: 40%;
+  height: 80px;
+}
+.infoCarrito {
+  width: 60%;
+  height: 80px;
+}
+input.cantCarrito {
+  width: 50%;
+  outline: none;
+  border: 0;
+  border-radius: 8px;
+  padding: 5px;
+  padding-left: 15px;
+  text-align: center;
+}
+.eliminarCarrito {
+  padding: 8px;
+  margin: auto;
+  color: #fff;
+}
+::-webkit-scrollbar:horizontal {
+  display: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background-color: #fff;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #fff;
+}
+::-webkit-scrollbar-track {
+  background-color: #f8fafd;
+}
+
+.menuDesp .box {
+  padding-left: 10px !important;
+}
+.menuDesp .box img {
+  opacity: 1;
+}
+.menuDesp .box p {
+  color: white;
+  opacity: 0.8;
+}
+.menuDesp .box a {
+  text-decoration: none;
+}
+.menuDesp .box:hover {
+  background: transparent;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 1rem;
+  border-radius: 10px;
+}
+.menuDesp .box p:hover {
+  color: white;
+  opacity: 1;
+}
+
+.contenedorProducto {
+  width: 100%;
+}
+.contProdImg {
+  width: 100%;
+  height: 150px;
+}
+.contProdImg img {
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+.contInfoProd {
+  width: 100%;
+  border-bottom-left-radius: 35px;
+}
+.star_box {
+  width: 50%;
+  height: 50px;
+}
+.contBtnProd {
+  width: 50%;
+  height: 50px;
+}
+.addToCart {
+  width: 50%;
+  height: 40px;
+  background: #cc99ff;
+  border-radius: 100px;
+  padding-left: 1rem;
+}
+.addToCart i {
+  color: #fff;
+  font-size: 150%;
+}
+.scrollEventAddClass {
+  background: #fff;
+}
+.scrollEventAddClassText {
+  color: black;
+}
+
+.showMenuCuenta {
+  display: block !important;
+}
+
+/* /////// */
+::-webkit-scrollbar:horizontal {
+  display: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background-color: #fff;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #fff;
+}
+::-webkit-scrollbar-track {
+  background-color: #f8fafd;
+}
+
+#verMenu {
+  text-decoration: none;
+}
+
+#intro {
+  font-family: "Raleway", sans-serif;
+  font-size: 210%;
+  font-weight: 400;
+  margin-left: 140px;
+  position: absolute;
+  margin-top: 210px;
+}
+
+#presentacion {
+  margin-left: 140px;
+  position: absolute;
+  margin-top: 355px;
+}
+
+#productosCarrito {
+  position: absolute;
+  margin-top: -30px;
+  margin-left: 7px;
+  color: #fff;
+  font-size: 80%;
+}
+
+footer {
+  padding: 8px;
+  background-color: #e5ccff;
+  width: 100%;
+  position: absolute;
+  margin-left: 0px;
+  margin-right: 0px;
+}
